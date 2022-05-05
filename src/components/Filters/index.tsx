@@ -12,23 +12,40 @@ export function Filters(){
     const [dataInicial, setDataInicial] = useState('')
     const [dataFinal, setDataFinal] = useState('')
 
-    function cumIPCA(data){
+
+
+    function cumIPCA(data: []){
+
+      interface IValue {
+        data: string,
+        valor: number
+      }
+      interface IValueArray {
+        data: string,
+        valor: string
+      }
 
       let acumulado = 1;
       let i = 0;
-      let values = []
+      let values:IValueArray[] = []
 
-      data.forEach(value => {
-        let valor = parseFloat(value.valor)
-        i = ((valor/100)+1)
+
+
+      data.map((val:IValue) => {
+        i = ((val.valor/100)+1)
         acumulado = acumulado * i
         values.push({
-          'data': value.data,
+          'data': val.data,
           'valor': acumulado.toFixed(4)
         })
-      });
+      })
 
       return values
+    }
+
+    function calcIPCA(data:[]){
+        let values = cumIPCA(data)
+        setContext(values)
     }
 
     function searchIPCA(){

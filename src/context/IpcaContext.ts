@@ -1,3 +1,3 @@
 import {createContext} from "react";
 
-export const IpcaContext = createContext()
+export const IpcaContext = createContext([])
