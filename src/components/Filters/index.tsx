@@ -5,7 +5,7 @@ import {api} from "../../services/api";
 import {IpcaContext} from "../../context/IpcaContext";
 
 export function Filters(){
-    const [values, setValues] = useState<Value[]>([]);
+    const [values, setValues] = useState([]);
 
     const [context, setContext] = useContext(IpcaContext);
 
